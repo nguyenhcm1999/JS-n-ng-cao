@@ -50,7 +50,7 @@ console.log(number)
 
 function logger() {
     var fullname = 'fullname'
-    // console.log(fullname) biến fullname hoạt động trong phạm vi local scope
+    console.log(fullname) //biến fullname hoạt động trong phạm vi local scope
     function logger2() {
         console.log("LOG 2")
     }
@@ -109,16 +109,13 @@ class Car {
     constructor(make, colour) {
         this.make = make;
         this.colour = colour;
-        
-        
     }
     run() {
         console.log(this)
     }
-    
 }
-
 const beemer = new Car('BMW', 'blue');
+beemer.run()
 
 Car.prototype.summarize = () => {
     console.log( `This car is a ${this.make} in the colour ${this.colour}`);  
@@ -173,3 +170,27 @@ var user = {
   };
 
 user.sayThis();
+
+
+const materials = [
+    'Hydrogen',
+    'Helium',
+    'Lithium',
+    'Beryllium'
+  ];
+  
+console.log(materials.map(function(material){return material.length}));
+
+
+let calc = {
+    read:function(){
+        this.a = +prompt('Nhập a', 0)
+        this.b = +prompt('Nhập b', 0)
+    },
+    sum:function(){
+       return this.a + this.b
+    }
+}
+// calc.read()
+console.log(calc.sum())
+
