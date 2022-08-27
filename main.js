@@ -90,3 +90,86 @@ const age1 = 18
 }
 console.log(d)
 
+function makeCounter(){
+    let counter = 0
+    function increase(){
+        return ++ counter
+    }
+
+    return increase
+}
+
+const increase1 = makeCounter()
+
+console.log(increase1())
+console.log(increase1())
+
+
+class Car {
+    constructor(make, colour) {
+        this.make = make;
+        this.colour = colour;
+        
+        
+    }
+    run() {
+        console.log(this)
+    }
+    
+}
+
+const beemer = new Car('BMW', 'blue');
+
+Car.prototype.summarize = () => {
+    console.log( `This car is a ${this.make} in the colour ${this.colour}`);  
+};
+
+beemer.summarize()
+
+Car.prototype.summarize1 = function () {
+    var test = () => {
+        console.log( `This car is a ${this.make} in the colour ${this.colour}`)
+    }
+    test()
+}
+
+beemer.summarize1()
+
+Car.prototype.summarize2 = function () {
+    var test = function() {
+        console.log( `This car is a ${this.make} in the colour ${this.colour}`)
+    }
+    test()
+}
+
+beemer.summarize2()
+const person = {
+    name:'hue',
+    getName: function(){
+        return this.name
+     }
+}
+
+person.getName() // 'hue'
+
+const getNamePerson = person.getName()
+console.log(getNamePerson)
+
+
+var user = { 
+    a : this,
+    firstName: "John",
+    sayThis: function() {
+        console.log(this)
+      var sayHi = function() {
+        console.log(`this is, ${this}!`); // this is, [Object Window]
+        console.log('this is window?', this === window); // true
+        console.log('Firstname is ', this.firstName); // undefined
+      }
+      // gọi hàm không có đối tượng đi kèm thì
+      // context lúc này là window
+      sayHi(); 
+    }
+  };
+
+user.sayThis();
